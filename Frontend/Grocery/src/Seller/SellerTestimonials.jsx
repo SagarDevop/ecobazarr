@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Rajesh Yadav",
     location: "Kanpur, UP",
-    quote: "GrocoMart helped me reach new customers without leaving my store. I now get regular orders every day!",
+    quote: "EcoBazzar helped me reach new customers without leaving my store. I now get regular orders every day!",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfq9__J9SxWTKGv0TzwO9Op11XeirTi5w0Eg&s",
   },
   {
@@ -19,14 +19,14 @@ const testimonials = [
   {
     name: "Imran Sheikh",
     location: "Lucknow, UP",
-    quote: "I joined GrocoMart 2 months ago, and my earnings have doubled. Highly recommend to other vendors!",
+    quote: "I joined EcoBazzar 2 months ago, and my earnings have doubled. Highly recommend to other vendors!",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRznAIloVWnLIDHsKZit8uPi5w7Cy8_Q3JlGA&s",
   },
 ];
 
 export default function SellerTestimonials() {
   return (
-    <section className="bg-green-50 py-16 px-4 md:px-12">
+    <section className="bg-brand-50 py-16 px-4 md:px-12">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-10">
           What Our Sellers Say

@@ -50,11 +50,11 @@ export default function BestSeller() {
           {/* Content */}
           <div className="relative pt-[20vh] z-10 text-white flex flex-col items-center justify-center h-full">
             <p className="font-semibold text-lg drop-shadow-sm">{item.name}</p>
-            <p className="text-green-300 font-bold drop-shadow">₹{item.price}</p>
+            <p className="text-brand-300 font-bold drop-shadow">₹{item.price}</p>
             <motion.button
               
               whileTap={{ scale: 0.95 }}
-              className="mt-2 px-4 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600 transition-colors duration-200"
+              className="mt-2 px-4 py-1 text-sm bg-brand-500 text-white rounded hover:bg-brand-600 transition-colors duration-200"
             >
               Add
             </motion.button>

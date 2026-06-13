@@ -1,71 +1,53 @@
 import React from "react";
-import { Truck, Leaf, Tag, Heart } from "lucide-react";
+import { Truck, Leaf, Tag, Heart, Shield, Clock } from "lucide-react";
+import { motion } from "framer-motion";
+
+const features = [
+  { icon: <Truck size={24} />, title: "30-Min Delivery", desc: "Lightning-fast delivery to your doorstep", color: "from-brand-400 to-brand-500" },
+  { icon: <Leaf size={24} />, title: "100% Organic", desc: "Farm-fresh, pesticide-free produce", color: "from-emerald-400 to-emerald-500" },
+  { icon: <Tag size={24} />, title: "Best Prices", desc: "Quality groceries at unbeatable rates", color: "from-accent-400 to-accent-500" },
+  { icon: <Heart size={24} />, title: "10K+ Happy Customers", desc: "Loved and trusted by thousands", color: "from-rose-400 to-rose-500" },
+  { icon: <Shield size={24} />, title: "Quality Guaranteed", desc: "Strict quality checks on every product", color: "from-violet-400 to-violet-500" },
+  { icon: <Clock size={24} />, title: "24/7 Support", desc: "We're always here to help you", color: "from-sky-400 to-sky-500" },
+];
 
 export default function WhyWeAreBest() {
   return (
-    <div className="bg-green-50 py-12 mx-[6vw] md:px-20 flex flex-col md:flex-row items-center justify-center gap-10 border-rounded-lg shadow-lg">
-      {/* Left Image Section */}
-      <div className="relative w-full md:w-1/2 flex justify-center">
-        <div className="bg-green-200 p-8 rounded-full w-[33vw] h-[49vh] relative">
-          <img
-            src="/women.png"
-            alt="Delivery Woman"
-            className="w-[33vw] h-auto object-cover rounded-xl absolute bottom-[0.4vh] left-8"
-            style={{
-              filter: "drop-shadow(0 9px 0 rgb(255, 255, 255))",
-            }}
-          />
+    <section className="py-24 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <span className="text-brand-600 dark:text-brand-400 font-bold tracking-[0.2em] text-xs uppercase">
+            Why Choose Us
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mt-3 tracking-tight">
+            Why We Are the <span className="bg-gradient-to-r from-brand-500 to-accent-500 bg-clip-text text-transparent">Best</span>
+          </h2>
+          <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-xl mx-auto">
+            We go above and beyond to bring you the freshest groceries with the most convenient shopping experience.
+          </p>
         </div>
-        <div className="absolute bottom-4 right-6  px-4 py-2 text-white rounded-full shadow-lg flex items-center gap-2 text-sm font-medium bg-green-900">
-          <Truck className="w-4 h-4 text-white" />
-          Fast Delivery in 30 Min
-        </div>
-      </div>
 
-      {/* Right Text Section */}
-      <div className="w-full md:w-1/2">
-        <h2 className="text-2xl md:text-3xl font-bold text-green-700 mb-6">
-          Why We Are the Best?
-        </h2>
-        <ul className="space-y-4">
-          <li className="flex items-start gap-4 ">
-            <Truck className="text-green-600 w-6 h-6 mt-1" />
-            <div>
-              <p className="font-semibold ">Fastest Delivery</p>
-              <p className="text-sm text-gray-600">
-                Groceries delivered in under 30 minutes.
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-4">
-            <Leaf className="text-green-600 w-6 h-6 mt-1" />
-            <div>
-              <p className="font-semibold">Freshness Guaranteed</p>
-              <p className="text-sm text-gray-600">
-                Fresh produce straight from the source.
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-4">
-            <Tag className="text-green-600 w-6 h-6 mt-1" />
-            <div>
-              <p className="font-semibold">Affordable Prices</p>
-              <p className="text-sm text-gray-600">
-                Quality groceries at unbeatable prices.
-              </p>
-            </div>
-          </li>
-          <li className="flex items-start gap-4">
-            <Heart className="text-green-600 w-6 h-6 mt-1" />
-            <div>
-              <p className="font-semibold">Trusted by Thousands</p>
-              <p className="text-sm text-gray-600">
-                Loved by 10,000+ happy customers.
-              </p>
-            </div>
-          </li>
-        </ul>
+        {/* Feature Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="group p-8 rounded-3xl bg-white dark:bg-surface-dark-gray border border-gray-100 dark:border-gray-800 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feat.color} flex items-center justify-center text-white shadow-lg mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                {feat.icon}
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{feat.title}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{feat.desc}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

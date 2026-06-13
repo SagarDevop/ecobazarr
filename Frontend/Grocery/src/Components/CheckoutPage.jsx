@@ -120,7 +120,7 @@ const CheckoutPage = () => {
                     key, 
                     amount: order.amount,
                     currency: order.currency,
-                    name: "GreenCart Organic",
+                    name: "EcoBazzar Fresh",
                     description: "Premium Grocery Transaction",
                     order_id: order.id,
                     handler: async (response) => {
@@ -149,7 +149,7 @@ const CheckoutPage = () => {
                         name: user.name,
                         email: user.email,
                     },
-                    theme: { color: "#10b981" },
+                    theme: { color: "#f59e0b" },
                 };
 
                 const paymentObject = new window.Razorpay(options);

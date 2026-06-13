@@ -63,7 +63,7 @@ const handleSubmit = async (e) => {
   return (
     <section className="bg-white py-16 px-4 md:px-12">
       <div className="max-w-4xl mx-auto text-center">
-        <Store className="mx-auto mb-4 text-green-600" size={48} />
+        <Store className="mx-auto mb-4 text-brand-600" size={48} />
         <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
           Ready to Start Selling?
         </h2>
@@ -73,7 +73,7 @@ const handleSubmit = async (e) => {
 
         <form
           onSubmit={handleSubmit}
-          className="bg-green-50 p-8 rounded-2xl shadow-lg max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left"
+          className="bg-brand-50 p-8 rounded-2xl shadow-lg max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 text-left"
         >
           <input
             type="text"
@@ -82,7 +82,7 @@ const handleSubmit = async (e) => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
           <input
             type="tel"
@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
             value={formData.phone}
             onChange={handleChange}
             required
-            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
           <input
             type="email"
@@ -102,7 +102,7 @@ const handleSubmit = async (e) => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
           <input
             type="text"
@@ -111,7 +111,7 @@ const handleSubmit = async (e) => {
             value={formData.city}
             onChange={handleChange}
             required
-            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
           <input
             type="text"
@@ -119,7 +119,7 @@ const handleSubmit = async (e) => {
             placeholder="Store Name"
             value={formData.store}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
           <input
             type="text"
@@ -127,12 +127,12 @@ const handleSubmit = async (e) => {
             placeholder="Products You Sell"
             value={formData.products}
             onChange={handleChange}
-            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="p-3 rounded-lg border border-gray-300 w-full focus:outline-none focus:ring-2 focus:ring-brand-500"
           />
           <button
             type="submit"
             disabled={loading}
-            className="col-span-1 md:col-span-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-60"
+            className="col-span-1 md:col-span-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-60"
           >
             {loading ? "Submitting..." : "Submit Registration"}
           </button>

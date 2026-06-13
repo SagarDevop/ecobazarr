@@ -3,136 +3,158 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
-import { Autoplay, EffectFade, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { Button } from './ui/Button';
-import { ChevronRight, ArrowRight } from 'lucide-react';
+import { ArrowRight, Truck, Shield, Leaf } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const heroSlides = [
   {
-    title: 'Freshness Delivered to Your Doorstep',
-    subtitle: 'PREMIUM GROCERY EXPERIENCE',
-    description: 'Discover the finest selection of organic fruits, fresh vegetables, and daily essentials handpicked just for you.',
+    title: 'Fresh Groceries, Delivered in Minutes',
+    subtitle: 'ORGANIC & NATURAL',
+    description: 'Discover farm-fresh produce, artisan dairy, and premium pantry staples — all delivered to your doorstep.',
     image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop',
-    cta: 'Shop Now',
-    color: 'brand'
+    cta: 'Start Shopping',
+    badge: '🥬 100+ Products',
   },
   {
-    title: 'Organic & Pesticide Free Greens',
+    title: 'Organic & Pesticide Free Living',
     subtitle: 'HEALTHY LIVING',
-    description: 'Support local farmers and enjoy the purest taste of nature with our farm-to-table organic collection.',
+    description: 'Support local farmers with our certified organic collection. Pure taste, zero chemicals.',
     image: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?q=80&w=2072&auto=format&fit=crop',
     cta: 'Explore Organic',
-    color: 'emerald'
+    badge: '🌿 Farm to Table',
   },
   {
-    title: 'Big Savings on Daily Essentials',
-    subtitle: 'BEST PRICES GUARANTEED',
-    description: 'Get up to 40% off on your monthly grocery list. Quality products at prices that make you smile.',
+    title: 'Big Savings Every Day',
+    subtitle: 'BEST PRICES',
+    description: 'Get up to 40% off on your monthly grocery list. Quality products, unbeatable prices.',
     image: 'https://images.unsplash.com/photo-1543168256-418811576931?q=80&w=2070&auto=format&fit=crop',
     cta: 'View Offers',
-    color: 'amber'
+    badge: '🔥 40% OFF',
   },
 ];
 
+const stats = [
+  { icon: <Truck size={20} />, label: '30 min delivery', color: 'text-brand-600 bg-brand-50 dark:bg-brand-950/30' },
+  { icon: <Shield size={20} />, label: 'Quality assured', color: 'text-accent-600 bg-accent-50 dark:bg-accent-950/30' },
+  { icon: <Leaf size={20} />, label: '100% organic', color: 'text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30' },
+];
+
 export default function GroceryHeroSwiper() {
+  const navigate = useNavigate();
+
   return (
-    <section className="w-full h-[70vh] md:h-[85vh] overflow-hidden relative">
+    <section className="relative overflow-hidden">
       <Swiper
-        modules={[Autoplay, EffectFade, Pagination, Navigation]}
+        modules={[Autoplay, EffectFade]}
         effect="fade"
         loop
         autoplay={{ delay: 6000, disableOnInteraction: false }}
-        pagination={{ clickable: true, dynamicBullets: true }}
-        className="h-full w-full"
+        className="w-full"
       >
         {heroSlides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full">
-              {/* Background Image with Zoom Effect */}
-              <motion.div 
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 10, ease: "linear" }}
-                className="absolute inset-0"
-              >
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-              </motion.div>
-
-              {/* Content Overlay */}
-              <div className="relative z-10 h-full max-w-7xl mx-auto px-6 flex flex-col justify-center">
+            <div className="relative min-h-[85vh] flex items-center">
+              {/* Split Layout */}
+              <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-0">
+                
+                {/* Left: Content */}
                 <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="max-w-2xl"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7 }}
+                  className="relative z-10"
                 >
-                  <span className="inline-block px-4 py-1.5 rounded-full bg-brand-500/20 backdrop-blur-md border border-brand-500/30 text-brand-400 text-xs font-bold tracking-[0.2em] mb-6 animate-pulse-subtle">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 dark:bg-brand-950/40 text-brand-700 dark:text-brand-400 text-xs font-bold tracking-widest uppercase mb-6">
                     {slide.subtitle}
                   </span>
-                  <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-[1.1]">
-                    {slide.title}
+                  
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-[1.08] mb-6 tracking-tight">
+                    {slide.title.split(' ').map((word, i) => (
+                      <span key={i}>
+                        {i === 1 ? (
+                          <span className="bg-gradient-to-r from-brand-500 to-accent-500 bg-clip-text text-transparent">{word} </span>
+                        ) : (
+                          word + ' '
+                        )}
+                      </span>
+                    ))}
                   </h1>
-                  <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed font-medium">
+                  
+                  <p className="text-lg text-gray-500 dark:text-gray-400 mb-10 max-w-lg leading-relaxed">
                     {slide.description}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-4">
-                    <Button size="lg" className="h-14 px-8 group">
+
+                  <div className="flex flex-wrap gap-4 mb-12">
+                    <Button size="lg" className="h-14 px-8 group" onClick={() => navigate('/products')}>
                       {slide.cta}
                       <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                     </Button>
-                    <Button variant="secondary" size="lg" className="h-14 px-8 bg-white/10 backdrop-blur-md text-white border border-white/20 hover:bg-white/20">
+                    <Button variant="outline" size="lg" className="h-14 px-8">
                       Learn More
                     </Button>
+                  </div>
+
+                  {/* Stats Row */}
+                  <div className="flex flex-wrap gap-3">
+                    {stats.map((stat, i) => (
+                      <div key={i} className={cn(
+                        "flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-gray-100 dark:border-gray-800",
+                        stat.color
+                      )}>
+                        {stat.icon}
+                        <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">{stat.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Right: Image with floating elements */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative hidden lg:block"
+                >
+                  <div className="relative">
+                    {/* Main image */}
+                    <div className="w-full aspect-square rounded-[3rem] overflow-hidden shadow-glass-lg border border-white/20">
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    {/* Floating badge */}
+                    <motion.div
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 shadow-card px-5 py-3 rounded-2xl border border-gray-100 dark:border-gray-700"
+                    >
+                      <span className="text-sm font-bold">{slide.badge}</span>
+                    </motion.div>
+
+                    {/* Decorative circles */}
+                    <div className="absolute -bottom-8 -left-8 w-24 h-24 bg-brand-200/40 dark:bg-brand-800/20 rounded-full blur-xl" />
+                    <div className="absolute -top-8 right-12 w-16 h-16 bg-accent-200/40 dark:bg-accent-800/20 rounded-full blur-xl" />
                   </div>
                 </motion.div>
               </div>
 
-              {/* Floating Badge (Glassmorphism) */}
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="absolute bottom-20 right-10 hidden lg:block z-20"
-              >
-                <div className="glass-effect p-6 rounded-3xl border border-white/20 max-w-[240px]">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="w-12 h-12 bg-brand-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
-                      <ChevronRight size={24} />
-                    </div>
-                    <div>
-                      <p className="text-white font-bold">Fast Delivery</p>
-                      <p className="text-slate-400 text-xs">Within 30 mins</p>
-                    </div>
-                  </div>
-                  <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <motion.div 
-                      initial={{ width: 0 }}
-                      animate={{ width: "70%" }}
-                      transition={{ duration: 2, delay: 1.5 }}
-                      className="h-full bg-brand-500" 
-                    />
-                  </div>
-                </div>
-              </motion.div>
+              {/* Background decorations */}
+              <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-50/50 dark:from-brand-950/10 to-transparent pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-surface-cream dark:from-surface-dark to-transparent pointer-events-none" />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      
-      {/* Decorative Wave Bottom */}
-      <div className="absolute bottom-0 left-0 w-full pointer-events-none z-20 overflow-hidden line-height-0">
-          <svg className="relative block w-full h-[60px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58,111.9,122.1,108.7,185.3,95.1a365.64,365.64,0,0,0,136.09-38.66Z" 
-                    className="fill-slate-50 dark:fill-surface-dark"></path>
-          </svg>
-      </div>
     </section>
   );
+}
+
+function cn(...classes) {
+  return classes.filter(Boolean).join(' ');
 }

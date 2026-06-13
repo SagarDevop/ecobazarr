@@ -3,27 +3,27 @@ import { motion } from "framer-motion";
 
 const requirements = [
   {
-    icon: <IdCard className="w-7 h-7 text-green-600" />,
+    icon: <IdCard className="w-7 h-7 text-brand-600" />,
     title: "Aadhar or PAN",
     desc: "Valid government ID for verification.",
   },
   {
-    icon: <Banknote className="w-7 h-7 text-green-600" />,
+    icon: <Banknote className="w-7 h-7 text-brand-600" />,
     title: "Bank Account",
     desc: "With IFSC for weekly payouts.",
   },
   {
-    icon: <Phone className="w-7 h-7 text-green-600" />,
+    icon: <Phone className="w-7 h-7 text-brand-600" />,
     title: "Mobile & Email",
     desc: "For contact and order updates.",
   },
   {
-    icon: <ListOrdered className="w-7 h-7 text-green-600" />,
+    icon: <ListOrdered className="w-7 h-7 text-brand-600" />,
     title: "Product Info",
     desc: "List of items with price and stock.",
   },
   {
-    icon: <ImagePlus className="w-7 h-7 text-green-600" />,
+    icon: <ImagePlus className="w-7 h-7 text-brand-600" />,
     title: "Product Images",
     desc: "Optional but helps attract buyers.",
   },
@@ -42,7 +42,7 @@ export default function SellerRequirements() {
           What You Need to Start Selling
         </motion.h2>
         <p className="text-gray-600 max-w-xl mx-auto mb-12">
-          Just a few simple things to begin your journey as a seller on GrocoMart.
+          Just a few simple things to begin your journey as a seller on EcoBazzar.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-left">
@@ -50,7 +50,7 @@ export default function SellerRequirements() {
             <motion.div
               key={idx}
               whileHover={{ scale: 1.05 }}
-              className="bg-green-50 p-6 rounded-xl shadow"
+              className="bg-brand-50 p-6 rounded-xl shadow"
             >
               <div className="mb-3">{item.icon}</div>
               <h4 className="text-lg font-semibold text-gray-800 mb-1">{item.title}</h4>

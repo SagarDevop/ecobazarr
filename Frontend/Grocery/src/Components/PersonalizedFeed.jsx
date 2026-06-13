@@ -56,8 +56,8 @@ const PersonalizedFeed = () => {
             <h4 className="font-bold text-slate-900 truncate uppercase text-sm mb-1">{product.name}</h4>
             <p className="text-xs text-slate-400 font-bold mb-4 capitalize">{product.category}</p>
             <div className="flex items-center justify-between">
-              <p className="font-black text-emerald-600">₹{product.price}</p>
-              <div className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              <p className="font-black text-brand-600">₹{product.price}</p>
+              <div className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center text-gray-400 group-hover:bg-brand-500 group-hover:text-white transition-colors">
                 <ShoppingBag size={14} />
               </div>
             </div>
@@ -74,7 +74,7 @@ const PersonalizedFeed = () => {
           title="Pick Up Where You Left Off" 
           products={data.recentlyViewed} 
           icon={Eye} 
-          colorClass="bg-blue-50 text-blue-600"
+          colorClass="bg-brand-50 text-brand-600"
         />
       )}
       
@@ -83,7 +83,7 @@ const PersonalizedFeed = () => {
           title="Recommended For You" 
           products={data.suggested} 
           icon={Sparkles} 
-          colorClass="bg-purple-50 text-purple-600"
+          colorClass="bg-accent-50 text-accent-600"
         />
       )}
     </div>

@@ -3,22 +3,22 @@ import { motion } from "framer-motion";
 
 const steps = [
   {
-    icon: <UserPlus className="w-8 h-8 text-green-600" />,
+    icon: <UserPlus className="w-8 h-8 text-brand-600" />,
     title: "Sign Up",
     desc: "Create your seller profile in minutes.",
   },
   {
-    icon: <Upload className="w-8 h-8 text-green-600" />,
+    icon: <Upload className="w-8 h-8 text-brand-600" />,
     title: "List Products",
     desc: "Add your items with pricing and stock info.",
   },
   {
-    icon: <ShoppingCart className="w-8 h-8 text-green-600" />,
+    icon: <ShoppingCart className="w-8 h-8 text-brand-600" />,
     title: "Get Orders",
     desc: "Start receiving orders from local buyers.",
   },
   {
-    icon: <Banknote className="w-8 h-8 text-green-600" />,
+    icon: <Banknote className="w-8 h-8 text-brand-600" />,
     title: "Get Paid",
     desc: "Receive weekly payments to your account.",
   },
@@ -26,7 +26,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-green-50 py-16 px-4 md:px-12">
+    <section className="bg-brand-50 py-16 px-4 md:px-12">
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

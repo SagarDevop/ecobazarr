@@ -6,8 +6,6 @@ export const login = (data) => api.post(`/login`, data);
 
 export const verifyOTP = (data) => api.post(`/verify-otp`, data);
 
-export const googleLogin = (token) => api.post(`/google-login`, { token });
-
 export const fetchAdminStats = () => api.get(`/api/admin/stats`);
 
 export const fetchAdminActivity = () => api.get(`/api/admin/activity`);

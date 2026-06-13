@@ -256,7 +256,7 @@ export default function ProductDetail() {
                   <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white">
                     <CheckCircle2 size={18} />
                   </div>
-                  <h4 className="font-bold text-emerald-800 dark:text-emerald-400 text-sm">GreenCart Verified Freshness</h4>
+                  <h4 className="font-bold text-brand-700 dark:text-brand-400 text-sm">EcoBazzar Verified Freshness</h4>
                </div>
                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {['Strict Quality Control', 'Pesticide Free', 'No Preservatives', 'Farm to Table'].map(item => (

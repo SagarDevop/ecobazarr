@@ -24,9 +24,7 @@ const ProductCard = ({ product }) => {
     (typeof item === 'string' ? item : item._id) === productId
   );
 
-  const showProduct = () => {
-    navigate(`/product/${productId}`);
-  };
+  const showProduct = () => navigate(`/product/${productId}`);
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -54,8 +52,8 @@ const ProductCard = ({ product }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      className="group relative flex flex-col premium-card overflow-hidden bg-white dark:bg-surface-dark-gray h-full"
+      whileHover={{ y: -6 }}
+      className="group relative flex flex-col bg-white dark:bg-surface-dark-gray rounded-3xl border border-gray-100 dark:border-gray-800 overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 h-full cursor-pointer"
       onClick={showProduct}
     >
       {/* Badge Overlay */}
@@ -66,34 +64,32 @@ const ProductCard = ({ product }) => {
           </span>
         )}
         {product.totalSales > 50 && (
-          <span className="bg-amber-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-lg flex items-center gap-1">
-             Best
+          <span className="bg-brand-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow-warm">
+            🔥 Best
           </span>
         )}
       </div>
 
-      {/* Action Buttons Overlay */}
+      {/* Action Buttons */}
       <div className="absolute top-3 right-3 z-10 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
         <button 
           onClick={handleWishlist}
           className={cn(
-            "p-2.5 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 border",
+            "p-2 rounded-full shadow-md backdrop-blur-md transition-all duration-300 hover:scale-110 border",
             isInWishlist 
               ? "bg-red-500 border-red-500 text-white" 
-              : "bg-white/90 dark:bg-slate-800/90 border-slate-100 dark:border-slate-700 text-slate-400"
+              : "bg-white/90 dark:bg-gray-800/90 border-gray-100 dark:border-gray-700 text-gray-400"
           )}
         >
-          <Heart size={18} className={isInWishlist ? "fill-current" : ""} />
+          <Heart size={16} className={isInWishlist ? "fill-current" : ""} />
         </button>
-        <button 
-          className="p-2.5 rounded-full bg-white/90 dark:bg-slate-800/90 border border-slate-100 dark:border-slate-700 text-slate-400 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 hover:text-brand-500"
-        >
-          <Eye size={18} />
+        <button className="p-2 rounded-full bg-white/90 dark:bg-gray-800/90 border border-gray-100 dark:border-gray-700 text-gray-400 shadow-md backdrop-blur-md transition-all duration-300 hover:scale-110 hover:text-brand-500">
+          <Eye size={16} />
         </button>
       </div>
 
-      {/* Image Container */}
-      <div className="aspect-square relative overflow-hidden bg-slate-50 dark:bg-slate-900/50">
+      {/* Image */}
+      <div className="aspect-square relative overflow-hidden bg-gray-50 dark:bg-gray-900/50">
         <img
           src={
             product.images && product.images.length > 0
@@ -103,23 +99,23 @@ const ProductCard = ({ product }) => {
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* Content */}
-      <div className="p-3 flex flex-col flex-1">
-        <div className="text-[9px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-1">
+      <div className="p-4 flex flex-col flex-1">
+        <div className="text-[10px] font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-1">
           {product.category}
         </div>
-        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 line-clamp-2 leading-tight group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors mb-2">
+        <h3 className="text-sm font-bold text-gray-800 dark:text-gray-100 line-clamp-2 leading-tight group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors mb-3">
           {product.name}
         </h3>
         
         <div className="mt-auto flex items-center justify-between gap-1">
           <div className="flex flex-col">
-            <span className="text-lg font-black text-slate-900 dark:text-white">₹{product.price}</span>
+            <span className="text-lg font-extrabold text-gray-900 dark:text-white">₹{product.price}</span>
             {product.mrp > product.price && (
-              <span className="text-[10px] text-slate-400 line-through">₹{product.mrp}</span>
+              <span className="text-[10px] text-gray-400 line-through">₹{product.mrp}</span>
             )}
           </div>
           
@@ -127,16 +123,16 @@ const ProductCard = ({ product }) => {
             onClick={handleAddToCart}
             variant="primary"
             size="icon"
-            className="rounded-xl w-9 h-9 shadow-md translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+            className="rounded-xl w-9 h-9 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
           >
             <ShoppingCart size={16} />
           </Button>
         </div>
 
-        {/* Stock Status */}
+        {/* Low Stock */}
         {product.stock > 0 && product.stock < 10 && (
           <div className="mt-3 flex items-center gap-1.5">
-            <div className="h-1 flex-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div className="h-1 flex-1 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
                <div className="h-full bg-orange-500" style={{ width: '30%' }} />
             </div>
             <span className="text-[10px] font-bold text-orange-600 whitespace-nowrap">Only {product.stock} left</span>

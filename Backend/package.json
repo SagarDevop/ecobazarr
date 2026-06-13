@@ -1,7 +1,7 @@
 {
-  "name": "greencart-backend",
+  "name": "ecobazzar-backend",
   "version": "1.0.0",
-  "description": "Node.js migration of GreenCart Flask backend",
+  "description": "Node.js backend for EcoBazzar grocery store",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

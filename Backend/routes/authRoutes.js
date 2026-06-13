@@ -7,7 +7,6 @@ const { validateRequest, signupSchema, loginSchema } = require('../middleware/va
 router.post('/signup', validateRequest(signupSchema), authController.signup);
 router.post('/verify-otp', authController.verifyOTP);
 router.post('/login', validateRequest(loginSchema), authController.login);
-router.post('/google-login', authController.googleLogin);
 router.post('/forgot-password', authController.forgotPassword);
 router.post('/reset-password', authController.resetPassword);
 

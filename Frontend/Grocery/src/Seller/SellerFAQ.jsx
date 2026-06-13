@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 const faqs = [
   {
-    question: "How much does it cost to sell on GrocoMart?",
+    question: "How much does it cost to sell on EcoBazzar?",
     answer: "It’s completely free to list your products. We charge a small service fee only when you make a sale.",
   },
   {

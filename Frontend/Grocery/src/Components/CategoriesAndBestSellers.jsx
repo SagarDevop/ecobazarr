@@ -10,12 +10,12 @@ const CategoriesAndBestSellers = () => {
   const navigate = useNavigate();
   // Default fallback categories to show while loading or if API returns limited data
   const defaultCategories = [
-    { name: "Vegetables", image: "/Organic veggies.png", color: "from-green-100 to-emerald-50" },
+    { name: "Vegetables", image: "/Organic veggies.png", color: "from-emerald-100 to-teal-50" },
     { name: "Fresh Fruits", image: "/Fresh Fruits.png", color: "from-rose-100 to-pink-50" },
-    { name: "Instant Food", image: "/Instant Food.png", color: "from-blue-100 to-sky-50" },
-    { name: "Dairy Products", image: "/Dairy Products.png", color: "from-orange-100 to-amber-50" },
-    { name: "Bakery & Breads", image: "/Bakery & Breads.png", color: "from-sky-100 to-blue-50" },
-    { name: "Grains & Cereals", image: "/Grains & Cereals.png", color: "from-purple-100 to-indigo-50" },
+    { name: "Instant Food", image: "/Instant Food.png", color: "from-sky-100 to-blue-50" },
+    { name: "Dairy Products", image: "/Dairy Products.png", color: "from-amber-100 to-yellow-50" },
+    { name: "Bakery & Breads", image: "/Bakery & Breads.png", color: "from-orange-100 to-amber-50" },
+    { name: "Grains & Cereals", image: "/Grains & Cereals.png", color: "from-violet-100 to-purple-50" },
   ];
 
   const [categories, setCategories] = useState(defaultCategories);
@@ -32,14 +32,14 @@ const CategoriesAndBestSellers = () => {
         
         if (catsRes.data && catsRes.data.length > 0) {
             const colors = [
-              'from-green-100 to-emerald-50', 
+              'from-emerald-100 to-teal-50', 
               'from-rose-100 to-pink-50', 
-              'from-blue-100 to-sky-50', 
-              'from-orange-100 to-amber-50', 
               'from-sky-100 to-blue-50', 
-              'from-purple-100 to-indigo-50', 
               'from-amber-100 to-yellow-50', 
-              'from-teal-100 to-emerald-50'
+              'from-orange-100 to-amber-50', 
+              'from-violet-100 to-purple-50', 
+              'from-teal-100 to-emerald-50', 
+              'from-pink-100 to-rose-50'
             ];
             
             const assetMap = {
@@ -200,7 +200,7 @@ const CategoriesAndBestSellers = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="relative rounded-[3rem] overflow-hidden bg-brand-600 text-white p-12 md:p-20 shadow-2xl shadow-brand-500/20"
+        className="relative rounded-[3rem] overflow-hidden bg-gradient-to-r from-brand-500 to-brand-600 text-white p-12 md:p-20 shadow-warm-lg"
       >
         <div className="absolute top-0 right-0 w-1/2 h-full bg-white/10 -skew-x-12 translate-x-1/4" />
         <div className="relative z-10 max-w-xl">

@@ -52,7 +52,7 @@ const app = express();
 
 // 1. CORS & Security Prep (Must be first for browser preflights)
 const allowedOrigins = [
-  'https://grocomart.netlify.app',
+  'https://ecobazzar.netlify.app',
   'https://grocery-grocery.vercel.app',
   'https://grocery-store-1-sgws.onrender.com',
   'http://localhost:5173'
@@ -85,8 +85,8 @@ app.use(helmet({
   }
 }));
 app.use(compression()); // Gzip compression
-app.use(morgan('dev')); // Dev logging
-morganBody(app); // Full request/response logging
+app.use(morgan('dev')); // Dev logging (method, url, status, time)
+// morganBody(app); // Disabled — was printing full request/response bodies
 
 // Default rate limiter
 const limiter = rateLimit({
@@ -97,7 +97,7 @@ const limiter = rateLimit({
 
 // Key generator for IP + Email tracking
 const authKeyGenerator = (req) => {
-  const email = req.body.email || req.query.email || "anonymous";
+  const email = req.body?.email || req.query?.email || "anonymous";
   return `${req.ip}-${email}`;
 };
 
@@ -195,7 +195,7 @@ app.get('/api/profile/me', protect, sellerController.getProfile);
 
 // Base route matching Flask logic
 app.get('/', (req, res) => {
-  res.json({ message: "Welcome to GreenCart API (Node.js)" });
+  res.json({ message: "Welcome to EcoBazzar API (Node.js)" });
 });
 
 // 5. Error Handling Middleware (Production-Hardened)

@@ -35,8 +35,8 @@ import ProtectedRoute from "./Components/ProtectedRoute"; // Import ProtectedRou
 
 // Modern Loading Spinner for Suspense
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
-    <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+  <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--surface-cream)' }}>
+    <div className="w-12 h-12 border-4 border-brand-500 border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 

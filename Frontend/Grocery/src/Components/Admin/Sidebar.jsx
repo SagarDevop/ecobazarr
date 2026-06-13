@@ -10,7 +10,9 @@ import {
   Search,
   Box
 } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../Redux/authSlice";
 import { cn } from "../../Utils/cn";
 
 const menuItems = [
@@ -24,6 +26,15 @@ const menuItems = [
 
 export default function AdminSidebar({ isCollapsed, setIsCollapsed }) {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    if (window.confirm("Are you sure you want to sign out?")) {
+      dispatch(logoutUser());
+      navigate("/");
+    }
+  };
 
   return (
     <aside className={cn(
@@ -76,7 +87,7 @@ export default function AdminSidebar({ isCollapsed, setIsCollapsed }) {
 
         {/* Footer */}
         <div className="pt-4 border-t border-gray-100 space-y-2">
-          <button className="flex items-center gap-3 p-3 rounded-xl w-full text-red-500 hover:bg-red-50 transition-colors">
+          <button onClick={handleSignOut} className="flex items-center gap-3 p-3 rounded-xl w-full text-red-500 hover:bg-red-50 transition-colors">
             <LogOut className="w-5 h-5" />
             {!isCollapsed && <span className="font-medium">Sign Out</span>}
           </button>

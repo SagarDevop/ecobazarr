@@ -5,7 +5,6 @@ const User = require('../models/User');
 const PendingUser = require('../models/PendingUser');
 const generateOTP = require('../utils/generateOTP');
 const { sendOtpEmailSignup, sendOtpEmailForgotPassword } = require('../services/emailService');
-const admin = require('../config/firebase-admin');
 
 /**
  * Handle user signup
@@ -145,7 +144,7 @@ exports.login = async (req, res) => {
 
     // Validate password
     if (!user.password) {
-      return res.status(401).json({ error: "Email registered via Google. Please use Google Login." });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -264,71 +263,3 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-/**
- * Handle Google Login (Firebase)
- */
-exports.googleLogin = async (req, res) => {
-    const { token: idToken } = req.body;
-
-    if (!idToken) {
-        return res.status(400).json({ error: "No token provided" });
-    }
-
-    try {
-        let decodedToken;
-        try {
-            decodedToken = await admin.auth().verifyIdToken(idToken);
-        } catch (verifyError) {
-            console.error("Firebase Token Verify Error:", verifyError.message);
-            return res.status(401).json({ error: "Invalid Google token" });
-        }
-
-        const { email, name, picture, uid } = decodedToken;
-
-        let user = await User.findOne({ 
-            $or: [ { googleId: uid }, { email: email } ] 
-        });
-
-        if (!user) {
-            console.log(`🆕 Creating new Google user: ${email}`);
-            user = await User.create({
-                name: name || "Google User",
-                email: email,
-                googleId: uid,
-                profileImage: picture,
-                is_verified: true,
-                role: "user",
-                cart: []
-            });
-        } else {
-            if (!user.googleId) user.googleId = uid;
-            if (!user.profileImage) user.profileImage = picture;
-            await user.save();
-        }
-
-        const jwtToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-
-        res.cookie('token', jwtToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            maxAge: 24 * 60 * 60 * 1000
-          });
-  
-          res.status(200).json({
-              message: "Google login successful",
-              token: jwtToken,
-              user: {
-                  _id: user._id,
-                  name: user.name,
-                  email: user.email,
-                  is_admin: user.is_admin || false,
-                  role: user.role,
-                  profileImage: user.profileImage
-              }
-          });
-  
-      } catch (error) {
-          console.error("Google Login Controller Error:", error);
-          res.status(500).json({ error: "Authentication failed" });
-      }
-  };
